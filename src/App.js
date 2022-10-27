@@ -21,24 +21,28 @@ function App() {
   const [favoritsArr, setFavoritsArr] = useState([]);
   const [selectedCity, setSelectedCity] = useState("Tel-aviv");
 
-  useEffect(() => {
-    if (presentationFlag === 0) {
-      searchCurrentWeather("215854", setWeatherFound);
-      search5DayWeather("215854", setFiveDayWeatherFound);
-      // setWeatherFound(telavivWeather);
-      // setFiveDayWeatherFound(telaviv5days);
-    }
-    if (presentationFlag === 1) {
-      searchCities(search, setCitiesFound);
-      // setCitiesFound(hebron);
-    }
-    if (presentationFlag === 2) {
-      searchCurrentWeather(cityKey, setWeatherFound);
-      search5DayWeather(cityKey, setFiveDayWeatherFound);
-      // setWeatherFound(telavivWeather);
-      // setFiveDayWeatherFound(telaviv5days);
-    }
-  }, [presentationFlag, search, cityKey]);
+  try {
+    useEffect(() => {
+      if (presentationFlag === 0) {
+        searchCurrentWeather("215854", setWeatherFound);
+        search5DayWeather("215854", setFiveDayWeatherFound);
+        // setWeatherFound(telavivWeather);
+        // setFiveDayWeatherFound(telaviv5days);
+      }
+      if (presentationFlag === 1) {
+        searchCities(search, setCitiesFound);
+        // setCitiesFound(hebron);
+      }
+      if (presentationFlag === 2) {
+        searchCurrentWeather(cityKey, setWeatherFound);
+        search5DayWeather(cityKey, setFiveDayWeatherFound);
+        // setWeatherFound(telavivWeather);
+        // setFiveDayWeatherFound(telaviv5days);
+      }
+    }, [presentationFlag, search, cityKey]);
+  } catch (e) {
+    console.error("problem in contacting the server");
+  }
 
   const present5DayAndWeather = (LocalizedName, Key) => {
     setCityKey(Key);
