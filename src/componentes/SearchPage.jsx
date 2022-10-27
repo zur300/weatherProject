@@ -115,7 +115,7 @@ export default function SearchPage(props) {
     <div className="homeDiv">
       <div className="navDiv">
         <h1>Weather forecast</h1>
-        <Link to="/favorits">
+        <Link to="/weatherProject/favorits">
           <button>Favortis</button>
         </Link>
         <button>Home</button>

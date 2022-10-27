@@ -29,7 +29,7 @@ export default function Favorits(props) {
       return (
         <div className="resultDiv" onClick={() => {
           props.present5DayAndWeather(val.currentCity, val.Key)
-          nav('/');
+          nav('/weatherProject');
 
 
         }}>
@@ -44,7 +44,7 @@ export default function Favorits(props) {
     <div>
       <div className="navDiv">
         <h1>Weather forecast</h1>
-        <Link to="/">
+        <Link to="/weatherProject">
           <button>Home</button>
         </Link>
       </div>
