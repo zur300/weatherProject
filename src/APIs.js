@@ -1,5 +1,6 @@
-const apiKey = "U1LLnS1mjIWRuam1uFGRlUpn0BvwLIPh";
-// "f8GWeQLX7NGQtnqTIvdqRm1TtCjiKuqk";
+const apiKey =
+  // "U1LLnS1mjIWRuam1uFGRlUpn0BvwLIPh";
+  "f8GWeQLX7NGQtnqTIvdqRm1TtCjiKuqk";
 // "Tm1AzBiBQ2BYpdhhMP5uTbvWe1QmjENh";
 
 export const searchCities = (search, onComplete) => {
@@ -54,6 +55,37 @@ export const search5DayWeather = (search, onComplete) => {
     })
     .catch((err) => {
       window.alert("Could not find 5 day weather");
+      console.log(err);
+    });
+};
+
+export const currentWeatherForFavorites = (
+  localizedName,
+  locationKey,
+  onComplete,
+  favoritesArr
+) => {
+  fetch(
+    "https://dataservice.accuweather.com/currentconditions/v1/" +
+      locationKey +
+      `?apikey=${apiKey}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((respond) => {
+      onComplete([
+        ...favoritesArr,
+        {
+          currentCity: localizedName,
+          Key: locationKey,
+          currentWeather: respond[0]?.Temperature?.Metric?.Value,
+        },
+      ]);
+      return respond;
+    })
+    .catch((err) => {
+      window.alert("Could not find weather");
       console.log(err);
     });
 };

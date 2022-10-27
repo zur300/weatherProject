@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {searchCurrentWeather} from "../APIs.js";
+import {currentWeatherForFavorites} from "../APIs.js";
 
 export default function SearchPage(props) {
   const [text, setText] = useState("");
@@ -24,8 +24,9 @@ export default function SearchPage(props) {
       return (
         <button
           onClick={() => {
-            searchCurrentWeather(currentCity.Key, props.setWeatherFound);
-            props.setFavoritesArr([...props.favoritesArr,{currentCity:currentCity.LocalizedName,Key:currentCity.Key,currentWeather:props.weatherFound?.[0]?.Temperature?.Metric?.Value}]);
+            currentWeatherForFavorites(currentCity.LocalizedName,currentCity.Key,props.setFavoritesArr,props.favoritesArr)
+
+            // [...props.favoritesArr,{currentCity:currentCity.LocalizedName,Key:currentCity.Key,currentWeather:[]}];
 
           }}
         >
