@@ -4,7 +4,7 @@ const apiKey = "U1LLnS1mjIWRuam1uFGRlUpn0BvwLIPh";
 
 export const searchCities = (search, onComplete) => {
   fetch(
-    `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=` +
+    `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${apiKey}&q=` +
       search
   )
     .then((res) => {
@@ -22,7 +22,7 @@ export const searchCities = (search, onComplete) => {
 
 export const searchCurrentWeather = (locationKey, onComplete) => {
   fetch(
-    "http://dataservice.accuweather.com/currentconditions/v1/" +
+    "https://dataservice.accuweather.com/currentconditions/v1/" +
       locationKey +
       `?apikey=${apiKey}`
   )
@@ -41,7 +41,7 @@ export const searchCurrentWeather = (locationKey, onComplete) => {
 
 export const search5DayWeather = (search, onComplete) => {
   fetch(
-    "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
+    "https://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
       search +
       `?apikey=${apiKey}`
   )
