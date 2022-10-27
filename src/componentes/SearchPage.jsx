@@ -5,19 +5,19 @@ import {searchCurrentWeather} from "../APIs.js";
 export default function SearchPage(props) {
   const [text, setText] = useState("");
 
-  const favoriteButton = (currentCity, isInFavorit) => {
-    if (isInFavorit) {
+  const favoriteButton = (currentCity, isInFavorite) => {
+    if (isInFavorite) {
       return (
         <button
           onClick={() => {
-            props.setFavoritsArr(
-              props.favoritsArr.filter(
+            props.setFavoritesArr(
+              props.favoritesArr.filter(
                 (favoriteCity) => favoriteCity.Key !== currentCity.Key
               )
             );
           }}
         >
-          ★ click to remove from favorits
+          ★ click to remove from favorites
         </button>
       );
     } else {
@@ -25,11 +25,11 @@ export default function SearchPage(props) {
         <button
           onClick={() => {
             searchCurrentWeather(currentCity.Key, props.setWeatherFound);
-            props.setFavoritsArr([...props.favoritsArr,{currentCity:currentCity.LocalizedName,Key:currentCity.Key,currentWeather:props.weatherFound?.[0]?.Temperature?.Metric?.Value}]);
+            props.setFavoritesArr([...props.favoritesArr,{currentCity:currentCity.LocalizedName,Key:currentCity.Key,currentWeather:props.weatherFound?.[0]?.Temperature?.Metric?.Value}]);
 
           }}
         >
-          add to favorits
+          add to favorites
         </button>
       );
     }
@@ -39,7 +39,7 @@ export default function SearchPage(props) {
   const mapCities = () => {
 
     return props.citiesFound?.map((currentCity) => {
-      const isInFavorit = props.favoritsArr.find(
+      const isInFavorite = props.favoritesArr.find(
         (favoriteCity) => favoriteCity.Key === currentCity.Key
       );
       return (
@@ -56,7 +56,7 @@ export default function SearchPage(props) {
           >
             show weather
           </button>
-          {favoriteButton(currentCity, isInFavorit)}
+          {favoriteButton(currentCity, isInFavorite)}
         </div>
       );
     });
@@ -115,8 +115,8 @@ export default function SearchPage(props) {
     <div className="homeDiv">
       <div className="navDiv">
         <h1>Weather forecast</h1>
-        <Link to="/weatherProject/favorits">
-          <button>Favortis</button>
+        <Link to="/weatherProject/favorites">
+          <button>Favorites</button>
         </Link>
         <button>Home</button>
       </div>

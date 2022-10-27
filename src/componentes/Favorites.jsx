@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { searchCurrentWeather, search5DayWeather } from "../APIs";
 
-export default function Favorits(props) {
+export default function Favorites(props) {
   const nav = useNavigate();
 
   // const [citiesToPresent, setCitiesToPresent] = useState([]);
@@ -24,8 +24,8 @@ export default function Favorits(props) {
 
   // }, [props.favoritsArr]);
 
-  const presentFavorits = () => {
-    return props.favoritsArr?.map((val) => {
+  const presentFavorites = () => {
+    return props.favoritesArr?.map((val) => {
       return (
         <div className="resultDiv" onClick={() => {
           props.present5DayAndWeather(val.currentCity, val.Key)
@@ -48,8 +48,8 @@ export default function Favorits(props) {
           <button>Home</button>
         </Link>
       </div>
-      <h1>Favorits</h1>
-      {presentFavorits()}
+      <h1>Favorites</h1>
+      {presentFavorites()}
     </div>
   );
 }
