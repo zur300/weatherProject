@@ -1,7 +1,6 @@
-const apiKey = 
-// "U1LLnS1mjIWRuam1uFGRlUpn0BvwLIPh"; 
+const apiKey = "U1LLnS1mjIWRuam1uFGRlUpn0BvwLIPh";
 // "f8GWeQLX7NGQtnqTIvdqRm1TtCjiKuqk";
-  "Tm1AzBiBQ2BYpdhhMP5uTbvWe1QmjENh";
+// "Tm1AzBiBQ2BYpdhhMP5uTbvWe1QmjENh";
 
 export const searchCities = (search, onComplete) => {
   fetch(
